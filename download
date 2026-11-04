@@ -1,0 +1,13 @@
+/node_modules
+/public/build
+/public/hot
+/public/avatars
+.env
+.env.backup
+.env.production
+.DS_Store
+/.vscode
+/.idea
+doable.db
+doable.db-shm
+doable.db-wal

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  doable:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doable
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - NODE_ENV=production
+      - PORT=8000
+      - APP_KEY=${APP_KEY:-base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=}
+    volumes:
+      - doable-data:/app/data
+      - doable-avatars:/app/public/avatars
+
+volumes:
+  doable-data:
+  doable-avatars:
