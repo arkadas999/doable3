@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: doable-app
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: NODE_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true

@@ -1,0 +1,850 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans:
+        'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display:
+        'Quicksand', 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-growth-0: var(--growth-0);
+    --color-growth-1: var(--growth-1);
+    --color-growth-2: var(--growth-2);
+    --color-growth-3: var(--growth-3);
+    --color-growth-4: var(--growth-4);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-border, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji';
+    }
+}
+
+::selection {
+    background-color: hsl(221 44% 18%);
+    color: hsl(221 30% 98%);
+}
+
+.dark ::selection,
+.dark *::selection {
+    background-color: hsl(221 16% 28%);
+    color: hsl(221 16% 96%);
+}
+
+/* Default blue. Signed-in pages override this from .accent-scope. */
+:root {
+    --background: hsl(221 22% 97%);
+    --foreground: hsl(221 44% 13%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(221 44% 13%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(221 44% 13%);
+    --primary: hsl(221 46% 27%);
+    --primary-foreground: hsl(221 30% 98%);
+    --secondary: hsl(221 20% 92%);
+    --secondary-foreground: hsl(221 35% 18%);
+    --muted: hsl(221 18% 94%);
+    --muted-foreground: hsl(221 12% 38%);
+    --accent: hsl(221 26% 89%);
+    --accent-foreground: hsl(221 35% 18%);
+    --destructive: hsl(8 62% 47%);
+    --destructive-foreground: hsl(221 30% 98%);
+    --success: hsl(221 50% 36%);
+    --success-foreground: hsl(221 30% 98%);
+    --border: hsl(221 16% 88%);
+    --input: hsl(221 14% 83%);
+    --ring: hsl(221 46% 27%);
+    --chart-1: hsl(221 46% 32%);
+    --chart-2: hsl(221 40% 38%);
+    --chart-3: hsl(221 36% 44%);
+    --chart-4: hsl(40 60% 50%);
+    --chart-5: hsl(200 40% 45%);
+    --radius: 0.875rem;
+
+    /* habit growth ramp — empty to deep accent */
+    --growth-0: hsl(221 16% 90%);
+    --growth-1: hsl(221 32% 75%);
+    --growth-2: hsl(221 36% 57%);
+    --growth-3: hsl(221 46% 39%);
+    --growth-4: hsl(221 56% 24%);
+
+    --sidebar-background: hsl(221 22% 95%);
+    --sidebar-foreground: hsl(221 24% 26%);
+    --sidebar-primary: hsl(221 46% 27%);
+    --sidebar-primary-foreground: hsl(221 30% 98%);
+    --sidebar-accent: hsl(221 28% 88%);
+    --sidebar-accent-foreground: hsl(221 44% 22%);
+    --sidebar-border: hsl(221 16% 86%);
+    --sidebar-ring: hsl(221 46% 27%);
+    --sidebar: hsl(221 22% 95%);
+}
+
+/* Default dark blue. Signed-in pages override this from .accent-scope. */
+.dark {
+    --background: hsl(221 24% 8%);
+    --foreground: hsl(221 16% 90%);
+    --card: hsl(221 20% 11%);
+    --card-foreground: hsl(221 16% 90%);
+    --popover: hsl(221 20% 11%);
+    --popover-foreground: hsl(221 16% 90%);
+    --primary: hsl(221 46% 46%);
+    --primary-foreground: #ffffff;
+    --secondary: hsl(221 14% 18%);
+    --secondary-foreground: hsl(221 16% 90%);
+    --muted: hsl(221 12% 18%);
+    --muted-foreground: hsl(221 12% 76%);
+    --accent: hsl(221 14% 21%);
+    --accent-foreground: hsl(221 16% 92%);
+    --destructive: hsl(8 64% 52%);
+    --destructive-foreground: hsl(221 20% 95%);
+    --success: hsl(221 50% 48%);
+    --success-foreground: #ffffff;
+    --border: hsl(221 14% 46%);
+    --input: hsl(221 12% 62%);
+    --ring: hsl(221 46% 46%);
+    --chart-1: hsl(221 46% 50%);
+    --chart-2: hsl(221 44% 48%);
+    --chart-3: hsl(221 40% 52%);
+    --chart-4: hsl(40 62% 56%);
+    --chart-5: hsl(200 44% 54%);
+
+    --growth-0: hsl(221 10% 18%);
+    --growth-1: hsl(221 20% 28%);
+    --growth-2: hsl(221 30% 37%);
+    --growth-3: hsl(221 40% 47%);
+    --growth-4: hsl(221 52% 58%);
+
+    --sidebar-background: hsl(221 22% 10%);
+    --sidebar-foreground: hsl(221 14% 82%);
+    --sidebar-primary: hsl(221 46% 46%);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: hsl(221 12% 20%);
+    --sidebar-accent-foreground: hsl(221 16% 94%);
+    --sidebar-border: hsl(221 12% 40%);
+    --sidebar-ring: hsl(221 46% 46%);
+    --sidebar: hsl(221 22% 10%);
+}
+
+/* Accent for the signed-in app. Login, sign up, and home stay on the default blue. */
+.accent-scope {
+    --primary: var(--accent-color);
+    --ring: var(--accent-color);
+    --chart-1: var(--accent-color);
+    --success: var(--accent-color);
+    --foreground: var(--accent-color);
+    --foreground: color-mix(in oklab, var(--accent-color) 48%, black);
+    --card-foreground: var(--accent-color);
+    --card-foreground: color-mix(in oklab, var(--accent-color) 48%, black);
+    --muted-foreground: var(--accent-color);
+    --muted-foreground: color-mix(in oklab, var(--accent-color) 24%, #3f3a34);
+    --primary-foreground: #ffffff;
+    --success-foreground: #ffffff;
+    --accent: var(--accent-color);
+    --accent: color-mix(in oklab, var(--accent-color) 16%, white);
+    --accent-foreground: var(--accent-color);
+    --accent-foreground: color-mix(in oklab, var(--accent-color) 55%, black);
+    --secondary: var(--accent-color);
+    --secondary: color-mix(in oklab, var(--accent-color) 10%, white);
+    --secondary-foreground: var(--accent-color);
+    --secondary-foreground: color-mix(in oklab, var(--accent-color) 45%, black);
+    --background: var(--accent-color);
+    --background: color-mix(in oklab, var(--accent-color) 8%, white);
+    --card: var(--accent-color);
+    --card: color-mix(in oklab, var(--accent-color) 4%, white);
+    --popover: var(--accent-color);
+    --popover: color-mix(in oklab, var(--accent-color) 4%, white);
+    --popover-foreground: var(--accent-color);
+    --popover-foreground: color-mix(in oklab, var(--accent-color) 55%, black);
+    --border: var(--accent-color);
+    --border: color-mix(in oklab, var(--accent-color) 22%, white);
+    --input: var(--accent-color);
+    --input: color-mix(in oklab, var(--accent-color) 26%, white);
+    --muted: var(--accent-color);
+    --muted: color-mix(in oklab, var(--accent-color) 8%, white);
+    --growth-1: color-mix(in oklab, var(--accent-color) 30%, white);
+    --growth-2: color-mix(in oklab, var(--accent-color) 48%, white);
+    --growth-3: color-mix(in oklab, var(--accent-color) 68%, white);
+    --growth-4: var(--accent-color);
+    --sidebar: var(--accent-color);
+    --sidebar: color-mix(in oklab, var(--accent-color) 8%, white);
+    --sidebar-background: var(--accent-color);
+    --sidebar-background: color-mix(in oklab, var(--accent-color) 8%, white);
+    --sidebar-foreground: var(--accent-color);
+    --sidebar-foreground: color-mix(in oklab, var(--accent-color) 42%, black);
+    --sidebar-primary: var(--accent-color);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: var(--accent-color);
+    --sidebar-accent: color-mix(in oklab, var(--accent-color) 16%, white);
+    --sidebar-accent-foreground: var(--accent-color);
+    --sidebar-accent-foreground: color-mix(in oklab, var(--accent-color) 45%, black);
+    --sidebar-border: var(--accent-color);
+    --sidebar-border: color-mix(in oklab, var(--accent-color) 20%, white);
+    --sidebar-ring: var(--accent-color);
+}
+
+.accent-scope[data-accent-light='true'] {
+    --primary-foreground: #ffffff;
+    --success-foreground: #ffffff;
+    --sidebar-primary-foreground: #ffffff;
+}
+
+:root:not(.dark) .accent-scope[data-accent-light='true'] .app-mark {
+    color: var(--accent-color);
+    color: color-mix(in oklab, var(--accent-color) 62%, #1c1914);
+}
+
+:root:not(.dark) .accent-scope[data-accent-light='true'] .priority-mark.tone-0 {
+    color: var(--accent-color);
+    color: color-mix(in oklab, var(--accent-color) 42%, #5c564c);
+}
+
+:root:not(.dark) .accent-scope[data-accent-light='true'] .priority-mark.tone-1 {
+    color: var(--accent-color);
+    color: color-mix(in oklab, var(--accent-color) 62%, #3a342c);
+}
+
+:root:not(.dark) .accent-scope[data-accent-light='true'] .priority-mark.tone-2 {
+    color: var(--accent-color);
+    color: color-mix(in oklab, var(--accent-color) 74%, black);
+}
+
+:root:not(.dark) .accent-scope[data-accent-light='true'] .priority-mark.tone-3 {
+    color: var(--accent-color);
+    color: color-mix(in oklab, var(--accent-color) 48%, black);
+}
+
+.dark.accent-scope,
+.dark .accent-scope {
+    color: var(--foreground);
+    --primary: var(--accent-color);
+    --primary: color-mix(in oklab, var(--accent-color) 62%, white);
+    --ring: var(--accent-color);
+    --ring: color-mix(in oklab, var(--accent-color) 55%, white);
+    --success: var(--accent-color);
+    --success: color-mix(in oklab, var(--accent-color) 62%, white);
+    --primary-foreground: #ffffff;
+    --success-foreground: #ffffff;
+    --background: var(--accent-color);
+    --background: color-mix(in oklab, var(--accent-color) 7%, #070809);
+    --card: var(--accent-color);
+    --card: color-mix(in oklab, var(--accent-color) 10%, #1a1d24);
+    --popover: var(--accent-color);
+    --popover: color-mix(in oklab, var(--accent-color) 12%, #22262e);
+    --foreground: var(--accent-color);
+    --foreground: color-mix(in oklab, var(--accent-color) 6%, white);
+    --card-foreground: var(--accent-color);
+    --card-foreground: color-mix(in oklab, var(--accent-color) 6%, white);
+    --popover-foreground: var(--accent-color);
+    --popover-foreground: color-mix(in oklab, var(--accent-color) 6%, white);
+    --muted-foreground: var(--accent-color);
+    --muted-foreground: color-mix(in oklab, var(--accent-color) 12%, #d7dbe2);
+    --accent: var(--accent-color);
+    --accent: color-mix(in oklab, var(--accent-color) 20%, #343a44);
+    --accent-foreground: var(--accent-color);
+    --accent-foreground: color-mix(in oklab, var(--accent-color) 6%, white);
+    --secondary: var(--accent-color);
+    --secondary: color-mix(in oklab, var(--accent-color) 14%, #2a3038);
+    --secondary-foreground: var(--accent-color);
+    --secondary-foreground: color-mix(in oklab, var(--accent-color) 6%, white);
+    --muted: var(--accent-color);
+    --muted: color-mix(in oklab, var(--accent-color) 16%, #2c313a);
+    --border: white;
+    --border: color-mix(in oklab, white 68%, var(--accent-color));
+    --input: white;
+    --input: color-mix(in oklab, white 58%, var(--accent-color));
+    --growth-0: color-mix(in oklab, var(--accent-color) 10%, #3c434e);
+    --growth-1: color-mix(in oklab, var(--accent-color) 34%, #3c434e);
+    --growth-2: color-mix(in oklab, var(--accent-color) 52%, #3c434e);
+    --growth-3: color-mix(in oklab, var(--accent-color) 48%, white);
+    --growth-4: color-mix(in oklab, var(--accent-color) 68%, white);
+    --sidebar: var(--accent-color);
+    --sidebar: color-mix(in oklab, var(--accent-color) 8%, #101216);
+    --sidebar-background: var(--accent-color);
+    --sidebar-background: color-mix(in oklab, var(--accent-color) 8%, #101216);
+    --sidebar-foreground: var(--accent-color);
+    --sidebar-foreground: color-mix(in oklab, var(--accent-color) 6%, #e7eaee);
+    --sidebar-primary: var(--accent-color);
+    --sidebar-primary: color-mix(in oklab, var(--accent-color) 62%, white);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: var(--accent-color);
+    --sidebar-accent: color-mix(in oklab, var(--accent-color) 26%, #3a414c);
+    --sidebar-accent-foreground: white;
+    --sidebar-border: white;
+    --sidebar-border: color-mix(in oklab, white 52%, var(--accent-color));
+    --sidebar-ring: var(--accent-color);
+    --sidebar-ring: color-mix(in oklab, var(--accent-color) 55%, white);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+[data-sonner-toast][data-styled='true'] {
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.16);
+}
+
+[data-sonner-toast][data-styled='true'] [data-description] {
+    color: var(--normal-text);
+    color: color-mix(in oklab, var(--normal-text) 72%, transparent) !important;
+}
+
+[data-sonner-toast][data-styled='true'] [data-button] {
+    height: 1.75rem;
+    border-radius: 999px;
+    padding-inline: 0.8rem;
+    background: var(--primary) !important;
+    color: var(--primary-foreground) !important;
+}
+
+.dark [data-sonner-toast][data-styled='true'] {
+    box-shadow: 0 18px 44px rgb(0 0 0 / 0.48);
+}
+
+/* Settings outlines stay dark on light pages and white on dark pages. */
+.settings-page {
+    --border: var(--foreground);
+    --border: color-mix(in oklab, var(--foreground) 68%, black);
+    --input: var(--foreground);
+    --input: color-mix(in oklab, var(--foreground) 52%, var(--accent-color));
+}
+
+.dark .settings-page {
+    --border: white;
+    --border: color-mix(in oklab, white 84%, var(--accent-color));
+    --input: white;
+    --input: color-mix(in oklab, white 74%, var(--accent-color));
+}
+
+.settings-frame {
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    background: var(--card);
+    padding: 1rem;
+}
+
+.focus-insight {
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 14%, var(--card));
+    border-color: var(--foreground);
+    border-color: color-mix(in oklab, var(--foreground) 62%, var(--accent-color));
+}
+
+.dark .focus-insight {
+    border-color: white;
+    border-color: color-mix(in oklab, white 78%, var(--accent-color));
+}
+
+/* Public home, login, and sign up: glass stage on the default blue theme. */
+.public-stage {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            800px 450px at 8% -10%,
+            color-mix(in oklab, var(--primary) 20%, transparent),
+            transparent 60%
+        ),
+        radial-gradient(
+            700px 400px at 110% 0%,
+            color-mix(in oklab, var(--primary) 14%, transparent),
+            transparent 55%
+        ),
+        var(--background);
+}
+
+.public-frame {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.public-orb {
+    position: absolute;
+    z-index: 0;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(40px);
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+@media (min-width: 640px) {
+    .public-orb {
+        animation: public-drift 18s ease-in-out infinite alternate;
+    }
+}
+
+.public-orb-a {
+    top: -6rem;
+    left: -4rem;
+    width: 18rem;
+    height: 18rem;
+    background: var(--primary);
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 40%, white);
+    opacity: 0.5;
+}
+
+.public-orb-b {
+    right: -5rem;
+    bottom: 8%;
+    width: 16rem;
+    height: 16rem;
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 32%, white);
+    opacity: 0.35;
+    animation-duration: 24s;
+    animation-direction: alternate-reverse;
+}
+
+.public-orb-c {
+    top: 38%;
+    left: 42%;
+    width: 12rem;
+    height: 12rem;
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 24%, transparent);
+    opacity: 0.4;
+    animation-duration: 20s;
+}
+
+.dark .public-orb-a,
+.dark .public-orb-b,
+.dark .public-orb-c {
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 36%, #9ec5ff);
+    opacity: 0.6;
+}
+
+.public-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    background: var(--background);
+    background: color-mix(in oklab, var(--background) 82%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.public-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 3.5rem;
+    padding-block: 0.35rem;
+}
+
+.public-nav-brand {
+    min-width: 0;
+    color: var(--foreground);
+}
+
+.public-nav-actions {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+@media (max-width: 480px) {
+    .public-nav-actions {
+        gap: 0.25rem;
+    }
+}
+
+.glass-panel {
+    background: var(--card);
+    background: color-mix(in oklab, var(--card) 65%, transparent);
+    border: 1px solid color-mix(in oklab, white 60%, transparent);
+    box-shadow:
+        0 12px 32px color-mix(in oklab, var(--primary) 10%, transparent),
+        inset 0 1px 0 color-mix(in oklab, white 70%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-panel {
+    background: var(--card);
+    background: color-mix(in oklab, var(--card) 85%, #121826);
+    border-color: white;
+    border-color: color-mix(in oklab, white 30%, transparent);
+    color: var(--foreground);
+    box-shadow:
+        0 16px 36px rgb(0 0 0 / 0.35),
+        inset 0 1px 0 color-mix(in oklab, white 20%, transparent);
+}
+
+.dark .public-stage {
+    color: var(--foreground);
+}
+
+.dark .public-stage .text-primary {
+    color: var(--primary);
+    color: color-mix(in oklab, var(--primary) 42%, white);
+}
+
+.public-stage input {
+    background-color: var(--background);
+    background-color: color-mix(in oklab, var(--background) 72%, transparent);
+}
+
+.public-nav-actions > button,
+.public-nav-actions button[aria-label^='Theme:'] {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+}
+
+.public-title {
+    color: var(--foreground);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .public-title {
+        background-image: linear-gradient(
+            115deg,
+            var(--foreground) 0%,
+            color-mix(in oklab, var(--primary) 62%, var(--foreground)) 42%,
+            var(--foreground) 78%
+        );
+        background-size: 180% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: public-sheen 9s ease-in-out infinite;
+    }
+
+    .dark .public-title {
+        background-image: linear-gradient(
+            115deg,
+            #f4f7ff 0%,
+            #9ec5ff 46%,
+            #f4f7ff 82%
+        );
+    }
+}
+
+.public-rise {
+    animation: public-rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.public-delay-1 {
+    animation-delay: 0.08s;
+}
+
+.public-delay-2 {
+    animation-delay: 0.16s;
+}
+
+.public-delay-3 {
+    animation-delay: 0.26s;
+}
+
+.public-delay-4 {
+    animation-delay: 0.36s;
+}
+
+.public-float {
+    animation: public-float 5.5s ease-in-out infinite alternate;
+}
+
+.public-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    border-radius: 1rem;
+    padding: 0.7rem 0.8rem;
+    background: var(--background);
+    background: color-mix(in oklab, var(--background) 55%, transparent);
+    font-size: 0.92rem;
+}
+
+.public-row-later {
+    color: var(--muted-foreground);
+}
+
+.dark .public-row {
+    background: white;
+    background: color-mix(in oklab, white 9%, transparent);
+    color: var(--foreground);
+}
+
+.dark .public-row-later {
+    color: white;
+    color: color-mix(in oklab, white 78%, var(--muted-foreground));
+}
+
+.public-chip {
+    margin-left: auto;
+    flex: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+.public-ring {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab, var(--primary) 70%, var(--foreground));
+}
+
+.public-tick-ring,
+.public-tick-mark {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.public-tick-ring {
+    opacity: 0.45;
+}
+
+.dark .public-tick-ring,
+.dark .public-tick-mark {
+    stroke: var(--primary);
+    stroke: color-mix(in oklab, var(--primary) 28%, white);
+}
+
+.dark .public-ring {
+    border-color: var(--primary);
+    border-color: color-mix(in oklab, var(--primary) 30%, white);
+}
+
+.dark .public-chip {
+    color: white;
+    color: color-mix(in oklab, white 82%, var(--primary));
+}
+
+.public-tick-mark {
+    stroke-dasharray: 16;
+    stroke-dashoffset: 16;
+    animation: public-draw 4.6s ease-in-out infinite;
+}
+
+.public-dot {
+    height: 1.35rem;
+    flex: 1;
+    border-radius: 0.45rem;
+    background: var(--growth-0);
+}
+
+.public-dot-on {
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 78%, white);
+}
+
+.dark .public-dot {
+    background: white;
+    background: color-mix(in oklab, white 18%, #1a2233);
+}
+
+.dark .public-dot-on {
+    background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 34%, #d7e6ff);
+}
+
+.public-dot:nth-child(4) {
+    animation: public-fill 4.6s ease-in-out infinite;
+}
+
+.dark .public-dot:nth-child(4) {
+    animation-name: public-fill-dark;
+}
+
+@keyframes public-drift {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(28px, 22px, 0) scale(1.08);
+    }
+}
+
+@keyframes public-rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes public-float {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes public-sheen {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes public-draw {
+    0%,
+    14% {
+        stroke-dashoffset: 16;
+    }
+
+    34%,
+    72% {
+        stroke-dashoffset: 0;
+    }
+
+    90%,
+    100% {
+        stroke-dashoffset: 16;
+    }
+}
+
+@keyframes public-fill {
+    0%,
+    18% {
+        background: var(--growth-0);
+    }
+
+    38%,
+    72% {
+        background: var(--primary);
+    }
+
+    100% {
+        background: var(--growth-0);
+    }
+}
+
+@keyframes public-fill-dark {
+    0%,
+    18% {
+        background: white;
+    background: color-mix(in oklab, white 18%, #1a2233);
+    }
+
+    38%,
+    72% {
+        background: var(--primary);
+    background: color-mix(in oklab, var(--primary) 30%, white);
+    }
+
+    100% {
+        background: white;
+    background: color-mix(in oklab, white 18%, #1a2233);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .public-orb,
+    .public-rise,
+    .public-float,
+    .public-title,
+    .public-tick-mark,
+    .public-dot {
+        animation: none !important;
+    }
+
+    .public-tick-mark {
+        stroke-dashoffset: 0;
+    }
+}
